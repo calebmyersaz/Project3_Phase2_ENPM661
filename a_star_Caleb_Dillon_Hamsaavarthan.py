@@ -10,17 +10,33 @@ import time
 import matplotlib.pyplot as plt
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
+WheelRadius = 14.35  #143.5mm
+RobotRadius = 22.0 # 220 mm
+WheelDistance = 28.7 #287mm
+
+
+
 
 # ## Get input for clearance (units) from the obstacle and Step Size of the mobile robot ##
 clear = int(float(input("Clearance from obstacles and walls: ")))
-radius = int(float(input("Radius of mobile robot: ")))
+# radius = int(float(input("Radius of mobile robot: ")))
+
+
+RPM1 = int(float(input("Input RPM1:")))
+RPM2 = int(float(input("Input RPM2:")))
+WheeRPM = [RPM1,RPM2]
+
 s = int(float(input("Step size of the mobile robot in range [1,10]: ")))
 if s<2:
     s=2
 w = int(float(input("Heuristic weightage (Enter 1 for default A* execution): ")))
-clearance = clear + radius
-round = round(clearance/2) + clearance%2
+clearance = clear + RobotRadius
+round = int(round(clearance/2) + clearance%2)
 border = round//2
+
+actionSet = [[0,RPM1],[RPM1,0],[RPM1,RPM1],[0,RPM2],[RPM2,0],[RPM2,RPM2],[RPM1,RPM2],[RPM2,RPM1]]
+
+
 
 ## Define Map ##
 
@@ -70,17 +86,10 @@ for i in range(359,480):
     for k in range(20,140):
         if (((i-420)**2 + (k-80)**2)<(60**2)):
             map[k][i] = (255,0,0)
-          
-
-
+            
 plt.matshow(map)
 plt.show()
-
-
-
-
-
-
+          
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
 ## Define a 'Node' class to store all the node informations ##
