@@ -160,15 +160,17 @@ while True:
     l1, l2 = l
     
     # Check if the given coordinates are in the 'Free Space'
-    if nodes[500-y1][x1][l1].free and nodes[500-y2][x2][l2].free:
+    if nodes[200-y1][x1][l1].free and nodes[200-y2][x2][l2].free:
         print("Executing path planning for the given coordinates........!!")
-        y1 = 500-y1
-        y2 = 500-y2
+        y1 = 200-y1
+        y2 = 200-y2
         break
     else:
         print("The given coordinates are not reachable. Try again with different coordinates")
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
+
+radius = 5 
 
 ## Create a copy of map to store the search state for every 500 iterations ##
 img = map.copy()
