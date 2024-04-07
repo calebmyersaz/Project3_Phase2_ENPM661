@@ -15,25 +15,33 @@ RobotRadius = 22.0 # 220 mm
 WheelDistance = 28.7 #287mm
 
 # ## Get input for clearance (units) from the obstacle and Step Size of the mobile robot ##
-clear = int(float(input("Clearance from obstacles and walls: ")))
-# radius = int(float(input("Radius of mobile robot: ")))
+# clear = int(float(input("Clearance from obstacles and walls: ")))
+# RPM1 = int(float(input("Input RPM1:")))
+# RPM2 = int(float(input("Input RPM2:")))
+
+clear = 5
+RPM1 = 5
+RPM2 = 6
 
 
-RPM1 = int(float(input("Input RPM1:")))
-RPM2 = int(float(input("Input RPM2:")))
 WheelRPM = [RPM1,RPM2]
 
-s = int(float(input("Step size of the mobile robot in range [1,10]: ")))
+# s = int(float(input("Step size of the mobile robot in range [1,10]: ")))
+
+s = 5
+
 if s<2:
     s=2
-w = int(float(input("Heuristic weightage (Enter 1 for default A* execution): ")))
+# w = int(float(input("Heuristic weightage (Enter 1 for default A* execution): ")))
+
+w = 1
+
 clearance = clear + RobotRadius
-round = int(round(clearance/2) + clearance%2)
-border = round//2
+rounded = int(round(clearance/2) + clearance%2)
+border = rounded//2
 
 actionSet = [[0,RPM1],[RPM1,0],[RPM1,RPM1],[0,RPM2],[RPM2,0],[RPM2,RPM2],[RPM1,RPM2],[RPM2,RPM1]]
 ##
-
 
 
 ## Define Map ##
@@ -42,22 +50,22 @@ actionSet = [[0,RPM1],[RPM1,0],[RPM1,RPM1],[0,RPM2],[RPM2,0],[RPM2,RPM2],[RPM1,R
 map = np.ones((200, 600, 3), dtype='uint8')*255
 #Wall Barriers
 for i in range(0,600):
-    for k in range(0,round):
+    for k in range(0,rounded):
         map[k][i] = (0,0,0)
 for i in range(0,600):
-    for k in range(200-round,200):
+    for k in range(200-rounded,200):
         map[k][i] = (0,0,0)
-for i in range(0,round):
+for i in range(0,rounded):
     for k in range(0,200):
         map[k][i] = (0,0,0)
-for i in range(600-round,600):
+for i in range(600-rounded,600):
     for k in range(0,200):
         map[k][i] = (0,0,0)  
       
 #Left Most Rectangle Object
 # Outer Black Rectangle
-for i in range(149-round,175+round):
-    for k in range(0,100+round):
+for i in range(149-rounded,175+rounded):
+    for k in range(0,100+rounded):
         map[k][i] = (0,0,0)
 #Inner Blue Rectangle
 for i in range(149,175):
@@ -65,8 +73,8 @@ for i in range(149,175):
         map[k][i] = (255,0,0)
 #Right Most Rectangle Object
 # Outer Black Rectangle
-for i in range(249-round,275+round):
-    for k in range(100-round,200):
+for i in range(249-rounded,275+rounded):
+    for k in range(100-rounded,200):
         map[k][i] = (0,0,0)
 #Inner Blue Rectangle
 for i in range(249,275):
@@ -76,20 +84,22 @@ for i in range(249,275):
 #Circle centered at 420,80, r of 60
 
 #Inner Blue Rectangle
-for i in range(359-round,480+round):
-    for k in range(20-round,140+round):
-        if (((i-420)**2 + (k-80)**2)<((60+round)**2)):
+for i in range(359-rounded,480+rounded):
+    for k in range(20-rounded,140+rounded):
+        if (((i-420)**2 + (k-80)**2)<((60+rounded)**2)):
             map[k][i] = (0,0,0)  
 for i in range(359,480):
     for k in range(20,140):
         if (((i-420)**2 + (k-80)**2)<(60**2)):
             map[k][i] = (255,0,0)
-            
+
+print(len(map[1]))
+print(len(map[1][1]))
 plt.matshow(map)
 plt.show()
-#----------------------------------------------------------------------------------------------------------------------------------------#
-#Define Curve Plotting 
-fig, ax = plt.subplots()
+# print(len(map[1][1][1]))
+
+# fig, ax = plt.subplots()
 def plot_curve(Xi,Yi,Thetai,UL,UR):
     t = 0
     r = 14.35#0.038
@@ -102,6 +112,7 @@ def plot_curve(Xi,Yi,Thetai,UL,UR):
     # Xs, Ys: Start point coordinates for plot function
     # Xn, Yn, Thetan: End point coordintes
     D=0
+    Collision = 1
     while t<1:
         t = t + dt
         Xs = Xn
@@ -111,13 +122,29 @@ def plot_curve(Xi,Yi,Thetai,UL,UR):
         Thetan += (r / L) * (UR - UL) * dt
         D=D+ math.sqrt(math.pow((0.5*r * (UL + UR) * math.cos(Thetan) *
         dt),2)+math.pow((0.5*r * (UL + UR) * math.sin(Thetan) * dt),2))
-        plt.plot([Xs, Xn], [Ys, Yn], color="blue")
+        # plt.plot([Xs, Xn], [Ys, Yn], color="blue")
+        ThetaTemp = 180 * (Thetan) / 3.14
+        if ThetaTemp>360:
+            ThetaTemp = ThetaTemp-360
+        if ThetaTemp<0:
+            ThetaTemp = ThetaTemp+360
+        ThetaTemp = ThetaTemp - 1
+        
+        
+        # print(Xn,Yn,Thetan)
+        # print(Xn,Yn,ThetaTemp)
+        
+        # print(nodes[round(Yn)][round(Xn)][round(ThetaTemp)])
+        try:
+            if (nodes[round(Yn)][round(Xn)][round(ThetaTemp)]).free:
+                # nodes[round(Yn)][round(Xn)][round(Thetan)].free
+                Collision =0
+        except:
+            Collision = 1
+            break
     Thetan = 180 * (Thetan) / 3.14
-    return Xn, Yn, Thetan, D          
-          
-#----------------------------------------------------------------------------------------------------------------------------------------#
+    return Xn, Yn, Thetan, D, Collision              
 
-## Define a 'Node' class to store all the node informations ##
 class Node():
     def __init__(self, coc=None, cost=None, parent=None, free=False, closed=False):
         # Cost of Coming from 'source' node 
@@ -135,19 +162,20 @@ class Node():
 
 ## Initiate an array of all possible nodes from the 'map' ##
 print("Building Workspace for Mobile Robot........!")
-nodes = np.zeros((map.shape[0], map.shape[1], 12), dtype=Node)
+nodes = np.zeros((map.shape[0], map.shape[1], 360), dtype=Node)
 for row in range(nodes.shape[0]):
     for col in range(nodes.shape[1]):
-        for angle in range(12):
+        for angle in range(360):
             nodes[row][col][angle] = Node()
             # If the node index is in the 'Free Space' of 'map', assign (True)
             if map[row][col][2] == 255:
                 nodes[row][col][angle].free = True
                 continue
+            
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
-## Define a 'Back-Tracking' function to derive path from 'source' to 'goal' node ##
+## Define a 'Back-Tracking' function to derive path from 'source' to 'goal' node ##          
 def backTrack(x,y,l):
     print("Backtracking!!")
     track = []
@@ -159,21 +187,29 @@ def backTrack(x,y,l):
         y,x,l = nodes[y][x][l].parent
     print("Path created!")
     return track
-
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
 ## Get 'Source' and 'Goal' node and check if it's reachable ##
 while True:
-    print("Node is a point (X,Y) in cartesian plane for X∈[0,600] and Y∈[0,200]")
-    x1 = int(float(input("X - Coordinate of Source Node: ")))
-    y1 = int(float(input("Y - Coordinate of Source Node: ")))
-    x2 = int(float(input("X - Coordinate of Goal Node: ")))
-    y2 = int(float(input("Y - Coordinate of Goal Node: ")))
-    print("Orientation of nodes (in degrees) is the direction of mobile robot from [180, 150, 120, .., 30, 0, -30, -60, .., -150]")
-    a1 = int(float(input("Orientation of Source Node (in degrees): ")))
+    # print("Node is a point (X,Y) in cartesian plane for X∈[0,600] and Y∈[0,200]")
+    # x1 = int(float(input("X - Coordinate of Source Node: ")))
+    # y1 = int(float(input("Y - Coordinate of Source Node: ")))
+    # x2 = int(float(input("X - Coordinate of Goal Node: ")))
+    # y2 = int(float(input("Y - Coordinate of Goal Node: ")))
+    # print("Orientation of nodes (in degrees) is the direction of mobile robot from [180, 150, 120, .., 30, 0, -30, -60, .., -150]")
+    # a1 = int(float(input("Orientation of Source Node (in degrees): ")))
+    
     # a2 = int(float(input("Orientation of Goal Node (in degrees): ")))
     # Convert a1, a2 to the corresponding layer number in the 3D array of 'nodes'
-    l = []
+   
+    x1 = 50
+    y1 = 100
+    x2 = 550
+    y2 = 100
+    a1 = 30
+   
+   
+   
     
     if a1 >= 0 and a1 <= 180:
         a1=(a1//30)
@@ -182,10 +218,10 @@ while True:
     else:
         print("Enter valid orientation from the list above")
         break
-    
+    l1 = a1
     
     # Check if the given coordinates are in the 'Free Space'
-    if nodes[200-y1][x1][a1].free and nodes[200-y2][x2][a1].free:
+    if nodes[200-y1][x1][l1].free and nodes[200-y2][x2][l1].free:
         print("Executing path planning for the given coordinates........!!")
         y1 = 200-y1
         y2 = 200-y2
@@ -194,8 +230,7 @@ while True:
         print("The given coordinates are not reachable. Try again with different coordinates")
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
-
-## Create a copy of map to store the search state for every 500 iterations ##
+        
 img = map.copy()
 # Mark 'source' and 'goal' nodes on the 'img'
 xs, ys = x1, y1
@@ -205,23 +240,18 @@ cv.circle(img,(xg,yg),int(RobotRadius),(255,0,255),-1) # Goal --> 'Purple'
 # Write out to 'dijkstra_output.avi' video file
 out = cv.VideoWriter('A*_output.mp4', cv.VideoWriter_fourcc(*'mp4v'), 60, (600,200))
 out.write(img)
-
 #----------------------------------------------------------------------------------------------------------------------------------------#
-
-## Define a function to search all the nodes from 'source' to 'goal' node using Dijkstra's Search ## 
-
-# Initiate a Priority Queue / Heap Queue with updatable priorities to store all the currently 'open nodes' for each iteration 
 open_nodes = []
 
 iterations = 0
 start = time.time()
 # while True:
 while(iterations<20):
-
     iterations += 1
-    if nodes[y1][x1][a1].parent != None:
-        # Change the color of all pixels explored to 'green', except 'source' and 'goal' colors
-        parent_y,parent_x,parent_l = nodes[y1][x1][a1].parent
+    print(iterations)
+    if nodes[y1][x1][l1].parent != None:
+        #  Change the color of all pixels explored to 'green', except 'source' and 'goal' colors
+        parent_y,parent_x,parent_l = nodes[y1][x1][l1].parent
         cv.line(img,(parent_x,parent_y),(x1,y1),(0,255,0),1)
         # Write search state 'img' for every 500 iterations
         if iterations/500 == iterations//500:
@@ -229,65 +259,58 @@ while(iterations<20):
             cv.circle(img,(xs,ys),int(RobotRadius),(0,255,255),-1)
             cv.circle(img,(xg,yg),int(RobotRadius),(255,0,255),-1)
             out.write(img)
-
-    # 'nodes[y1][x1][l1]' --> current 'open' node
+         # 'nodes[y1][x1][l1]' --> current 'open' node
     if nodes[y1][x1][l1].parent == None:
         # Cost to come for the source node is '0' itself
         nodes[y1][x1][l1].coc = 0
         # Update Total Cost with Cost to Come and Cost to go to the goal is the 'euclidean distance' times the 'Heuristic Weightage'
         nodes[y1][x1][l1].cost = (nodes[y1][x1][l1].coc + (math.sqrt((y2-y1)**2 + (x2-x1)**2))*w)
-        
     # Verify if the current 'open' node is in threshold of 'goal' node (1.5 units radius)
-    if l1 == l2 and ((y2-y1)**2 + (x2-x1)**2) <= ((1.5*RobotRadius)**2):
+    if ((y2-y1)**2 + (x2-x1)**2) <= ((1.5*RobotRadius)**2):
         print("Path Planning Successfull!!!")
         # Call 'Back-Tracking' function
-        path = backTrack(x1,y1,l1)
+        path = backTrack(x1,y1,a1)
         break
-
-    # If the current 'node' is not in the threshold region of 'goal' node, 'close' the node and explore neighbouring nodes
+     # If the current 'node' is not in the threshold region of 'goal' node, 'close' the node and explore neighbouring nodes
     else:
         # Close the node and explore corresponding neighbours
         nodes[y1][x1][l1].closed = True
         # Perform All Possible Action Sets from: {(-60, -30, 0, 30, 60)}
         # Get neighbouring nodes to the current 'open' node and add it to the Heap Queue 'open_nodes'
-        
         # Initiate a list to iterate over 'actions' sets with Cost of Come = Step Size (s)
-        # actions = [0, 30, 60, -30, -60]
         actions = [[0,RPM1],[RPM1,0],[RPM1,RPM1],[0,RPM2],[RPM2,0],[RPM2,RPM2],[RPM1,RPM2],[RPM2,RPM1]]
-        # angle of orientation of robot 'theta' in degrees
-        theta = 30*l1
-        deg = np.pi/180
-
-        # Cost to come of the current open node (y1,x1)
+        theta = l1
+        # deg = np.pi/180
         dist = nodes[y1][x1][l1].coc
-
-        # Iterate over 'actions' list 
+        
         for action in actions:
             ActionMove = plot_curve(x1,y1,theta,action[0],action[1])
-            # Returns Xn Yn Thetan and D(cost)
-            phi = ActionMove[2]
-            y = ActionMove[1]
-            x = ActionMove[2]
-            l = int(phi/30)
             
-            if l >= 12:
-                l = l-12
+            # Returns Xn Yn Thetan and D(cost), and collision
+            phi = round(ActionMove[2])
+            y = round(ActionMove[1])
+            x = round(ActionMove[2])
+            print(phi)
+            l = phi
+            if l >= 360:
+                l = l-360
             elif l < 0:
-                l = 12+l
-
-            # If the new node exceeds from the map
+                l = 360+l
+                
             if x >= 600 or y >= 200:
                 continue
-            # If the neighbour node is already 'closed', iterate over next action
-            if nodes[y][x][l].closed:
+            
+            print(x,y,l)
+            
+            if nodes[y][x][l1].closed:
                 continue
-            # Check if new node is in 'Free Space'
-            if nodes[y][x][l].free:
+             # Check if new node is in 'Free Space'
+            if nodes[y][x][l1].free:
                 # Cost to Come 'c2c' corresponding to each angle
-                if action < 0:
-                    action = -1*action
+                # if action < 0:
+                #     action = -1*action
                 # c2c = s / np.cos(action*deg)
-                c2c = ActionMove[3]
+                c2c = round(ActionMove[3])
                 # Cost to Go 'c2g'
                 c2g = (math.sqrt((y2-y)**2 + (x2-x)**2))*w
                 # If the new node is visited for the first time, update '.coc', '.cost' and '.parent'
@@ -295,17 +318,19 @@ while(iterations<20):
                     nodes[y][x][l].coc = dist + c2c
                     nodes[y][x][l].cost = (nodes[y][x][l].coc + c2g)
                     cost = nodes[y][x][l].cost
-                    nodes[y][x][l].parent = (y1,x1,l1)
+                    nodes[y][x][l].parent = (y1,x1,a1)
                     # Add new node to 'open_nodes'
                     hq.heappush(open_nodes, (cost, (y, x, l)))
                 # If the new node was already visited, update '.coc' and '.parent' only if the new_node.coc is less than the existing value
                 elif (dist + c2c) < nodes[y][x][l].coc:
                     nodes[y][x][l].coc = dist + c2c
                     cost = (nodes[y][x][l].coc + c2g)
-                    nodes[y][x][l].parent = (y1,x1,l1)
+                    nodes[y][x][l].parent = (y1,x1,a1)
                     # Update 'priority' of new node in 'open_nodes'
+                    print("Pushing")
                     hq.heappush(open_nodes, (cost, (y, x, l)))
-
+                    
+    
         while True:
             # Pop next element from 'open_nodes'
             (priority, node) = hq.heappop(open_nodes)
@@ -320,22 +345,15 @@ while(iterations<20):
         y1 = y
         x1 = x
         l1 = l
+        
+plt.matshow(map[:][:][1])
+plt.show()
 
-# Write last frame to video file
-# Mark 'source' and 'goal' nodes on the 'img'
-cv.circle(img,(xs,ys),int(RobotRadius),(0,255,255),-1)
-cv.circle(img,(xg,yg),int(RobotRadius),(255,0,255),-1)
-out.write(img)
-print("Number of iterations: ",iterations)
-#----------------------------------------------------------------------------------------------------------------------------------------#
 
 end = time.time()
 runntime = end-start
 print("Path Planning Time: ",runntime)
 
-#----------------------------------------------------------------------------------------------------------------------------------------#
-
-# Iterate over 'optimalPath' and change each pixel in path to 'Red'
 count = 0
 for i in range(0,len(path)-1):
     count+=1
@@ -352,8 +370,6 @@ for i in range(120):
 
 # Display 'Optimal Path' for 5 seconds
 cv.imshow("Optimal Path", img)
-cv.waitKey(5*1000)
+cv.waitKey(5*3000)
 
-out.release()
-
-#=========================================================================================================================================#
+plt.show(img)
