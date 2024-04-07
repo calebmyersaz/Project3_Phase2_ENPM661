@@ -250,7 +250,7 @@ while True:
 
             # Change in of robot orientation 'theta' in radians, corresponding to 'action'
             # theta = int((RobotRadius / WheelDistance) * (wl - wr) * t)
-            theta = (wl - wr) / RPM1
+            theta = (wl - wr) / t
             print("theta: ", theta)
             theta = int(theta)
             # theta = 1
