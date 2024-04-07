@@ -33,11 +33,11 @@ WheelRPM = [RPM1,RPM2]
 # if s<2:
 #     s=2
 # w = int(float(input("Heuristic weightage (Enter 1 for default A* execution): ")))
-w = 1
+w = 2
 clearance = clear + RobotRadius
-# round = int(round(clearance/2) + clearance%2)
-round = int(clearance)
-border = round//2
+# rounded = int(round(clearance/2) + clearance%2)
+rounded = int(clearance)
+border = rounded//2
 
 actionSet = [[0,RPM1],[RPM1,0],[RPM1,RPM1],[0,RPM2],[RPM2,0],[RPM2,RPM2],[RPM1,RPM2],[RPM2,RPM1]]
 
@@ -48,22 +48,22 @@ actionSet = [[0,RPM1],[RPM1,0],[RPM1,RPM1],[0,RPM2],[RPM2,0],[RPM2,RPM2],[RPM1,R
 map = np.ones((200, 600, 3), dtype='uint8')*255
 #Wall Barriers
 for i in range(0,600):
-    for k in range(0,round):
+    for k in range(0,rounded):
         map[k][i] = (0,0,0)
 for i in range(0,600):
-    for k in range(200-round,200):
+    for k in range(200-rounded,200):
         map[k][i] = (0,0,0)
-for i in range(0,round):
+for i in range(0,rounded):
     for k in range(0,200):
         map[k][i] = (0,0,0)
-for i in range(600-round,600):
+for i in range(600-rounded,600):
     for k in range(0,200):
         map[k][i] = (0,0,0)  
       
 #Left Most Rectangle Object
 # Outer Black Rectangle
-for i in range(149-round,175+round):
-    for k in range(0,100+round):
+for i in range(149-rounded,175+rounded):
+    for k in range(0,100+rounded):
         map[k][i] = (0,0,0)
 #Inner Blue Rectangle
 for i in range(149,175):
@@ -71,8 +71,8 @@ for i in range(149,175):
         map[k][i] = (255,0,0)
 #Right Most Rectangle Object
 # Outer Black Rectangle
-for i in range(249-round,275+round):
-    for k in range(100-round,200):
+for i in range(249-rounded,275+rounded):
+    for k in range(100-rounded,200):
         map[k][i] = (0,0,0)
 #Inner Blue Rectangle
 for i in range(249,275):
@@ -82,9 +82,9 @@ for i in range(249,275):
 #Circle centered at 420,80, r of 60
 
 #Inner Blue Rectangle
-for i in range(359-round,480+round):
-    for k in range(20-round,140+round):
-        if (((i-420)**2 + (k-80)**2)<((60+round)**2)):
+for i in range(359-rounded,480+rounded):
+    for k in range(20-rounded,140+rounded):
+        if (((i-420)**2 + (k-80)**2)<((60+rounded)**2)):
             map[k][i] = (0,0,0)  
 for i in range(359,480):
     for k in range(20,140):
@@ -123,7 +123,6 @@ for row in range(nodes.shape[0]):
             if map[row][col][2] == 255:
                 nodes[row][col][angle].free = True
                 continue
-print("Workspace building is successfully completed!!")
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
@@ -154,7 +153,6 @@ while True:
     print("Orientation of nodes (in degrees) is the direction of mobile robot for theta∈[0,360)")
     # a1 = int(float(input("Orientation of Source Node (in degrees): ")))
     a1 = 0
-    # a2 = int(float(input("Orientation of Goal Node (in degrees): ")))
     # Convert a1 to the corresponding layer number [0,359] in the 3D array of 'nodes'
     if a1 in (0, 360):
         l1 = a1
@@ -231,12 +229,12 @@ while True:
         # Perform All Possible Action Sets from actionSet: [[0,RPM1],[RPM1,0],[RPM1,RPM1],[0,RPM2],[RPM2,0],[RPM2,RPM2],[RPM1,RPM2],[RPM2,RPM1]]
         # Get neighbouring nodes to the current 'open' node and add it to the Heap Queue 'open_nodes'
         
-        # time
-        # t = 0.2
-        t = 1 / ((WheelRadius / WheelDistance) * (RPM1))
-        print("t: ", t)
         # 'deg' to 'rad' conversion
+        pi2 = 2*np.pi
         deg = np.pi/180
+
+        # time 't' such that the change in orientation can be atleast 2 degrees
+        t = (2*deg) / ((WheelRadius / WheelDistance) * (RPM1*pi2/60))
 
         # Cost to come of the curren
         # t open node (y1,x1)
@@ -245,37 +243,36 @@ while True:
         # Iterate over 'actions' list 
         for action in actionSet:
             # Angular velocity of left and right wheels (wl, wr) respectively in rad/sec
-            wl = (action[0]*2*np.pi) / 60
-            wr = (action[1]*2*np.pi) / 60
+            wl = (action[0]*pi2) / 60
+            wr = (action[1]*pi2) / 60
 
-            # Change in of robot orientation 'theta' in radians, corresponding to 'action'
-            # theta = int((RobotRadius / WheelDistance) * (wl - wr) * t)
-            theta = (wl - wr) / t
-            print("theta: ", theta)
-            theta = int(theta)
-            # theta = 1
+            # Change in of robot orientation 'theta' in degrees, corresponding to 'action'
+            theta = (WheelRadius / WheelDistance) * (wl - wr) * t
+            # 'theta' in degrees
+            theta = round(theta / deg)
             phi = theta+l1
             if phi < 0:
                 phi = 360 + phi
             elif phi >= 360:
                 phi = 360 - phi
+            
             # Distance traveled along X and Y axis, corresponding to 'action'
-            y = int(y1 + ((WheelRadius/2) * (wl + wr) * np.sin(phi*deg) * t))
-            x = int(x1 + ((WheelRadius/2) * (wl + wr) * np.cos(phi*deg) * t))
+            dy = ((WheelRadius/2) * (wl + wr) * np.sin(phi*deg) * t)
+            dx = ((WheelRadius/2) * (wl + wr) * np.cos(phi*deg) * t)
+            y = round(y1 + dy)
+            x = round(x1 + dx)
             l = phi
-            print("l: ",l)
 
             # If the new node exceeds from the map
             if x >= 600 or y >= 200:
                 continue
-            print(y, x, l)
             # If the neighbour node is already 'closed', iterate over next action
             if nodes[y][x][l].closed:
                 continue
             # Check if new node is in 'Free Space'
             if nodes[y][x][l].free:
                 # Cost to Come 'c2c' corresponding to each 'action'
-                c2c = math.sqrt((y2-y)**2 + (x2-x)**2)
+                c2c = math.sqrt((y1-y)**2 + (x1-x)**2)
                 # Cost to Go 'c2g'
                 c2g = (math.sqrt((y2-y)**2 + (x2-x)**2))*w
                 # If the new node is visited for the first time, update '.coc', '.cost' and '.parent'
@@ -308,7 +305,6 @@ while True:
         y1 = y
         x1 = x
         l1 = l
-        
 
 # Write last frame to video file
 # Mark 'source' and 'goal' nodes on the 'img'
@@ -316,14 +312,11 @@ while True:
 # cv.circle(img,(xg,yg),radius,(255,0,255),-1)
 # out.write(img)
 print("Number of iterations: ",iterations)
-
 # #----------------------------------------------------------------------------------------------------------------------------------------#
 
 # end = time.time()
 # runntime = end-start
-# print("Path Planning Time: ",runntime)
-
-# #----------------------------------------------------------------------------------------------------------------------------------------#
+# print("Path Planning Time: ",runntime)#----------------------------------------------------------------------------------------------------------------------------------------#
 
 # # Iterate over 'optimalPath' and change each pixel in path to 'Red'
 # count = 0
