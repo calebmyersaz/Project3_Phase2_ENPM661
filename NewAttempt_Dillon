@@ -10,7 +10,7 @@ import time
 import matplotlib.pyplot as plt
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
-WheelRadius = 14.35  #143.5mm
+WheelRadius = 2.20  #143.5mm #22 mm
 RobotRadius = 22.0 # 220 mm
 WheelDistance = 28.7 #287mm
 
@@ -93,16 +93,16 @@ for i in range(359,480):
         if (((i-420)**2 + (k-80)**2)<(60**2)):
             map[k][i] = (255,0,0)
 
-print(len(map[1]))
-print(len(map[1][1]))
-plt.matshow(map)
-plt.show()
-# print(len(map[1][1][1]))
+# print(len(map[1]))
+# print(len(map[1][1]))
+# plt.matshow(map)
+# plt.show()
+# # print(len(map[1][1][1]))
 
 # fig, ax = plt.subplots()
 def plot_curve(Xi,Yi,Thetai,UL,UR):
     t = 0
-    r = 14.35#0.038
+    r = 2.20#0.038
     L = 28.7#0.354
     dt = 0.05
     Xn=Xi
@@ -232,6 +232,8 @@ while True:
 #----------------------------------------------------------------------------------------------------------------------------------------#
         
 img = map.copy()
+
+
 # Mark 'source' and 'goal' nodes on the 'img'
 xs, ys = x1, y1
 xg, yg = x2, y2
@@ -346,30 +348,31 @@ while(iterations<20):
         x1 = x
         l1 = l
         
-plt.matshow(map[:][:][1])
-plt.show()
+# plt.matshow(map[:][:][1])
+# plt.show()
 
 
 end = time.time()
 runntime = end-start
-print("Path Planning Time: ",runntime)
+# print("Path Planning Time: ",runntime)
 
-count = 0
-for i in range(0,len(path)-1):
-    count+=1
-    pt1 = (path[i][1], path[i][0])
-    pt2 = (path[i+1][1], path[i+1][0])
-    cv.line(img,pt1,pt2,(0,0,255),1)
-    # Write to video file for every 2 iterations
-    if count/2 == count//2:
-       out.write(img)
+# count = 0
+# for i in range(0,len(path)-1):
+#     count+=1
+#     pt1 = (path[i][1], path[i][0])
+#     pt2 = (path[i+1][1], path[i+1][0])
+#     cv.line(img,pt1,pt2,(0,0,255),1)
+#     # Write to video file for every 2 iterations
+#     if count/2 == count//2:
+#        out.write(img)
 
 # Last frame in path travelling
-for i in range(120):
-    out.write(img)
+# for i in range(120):
+#     out.write(img)
 
 # Display 'Optimal Path' for 5 seconds
-cv.imshow("Optimal Path", img)
-cv.waitKey(5*3000)
+# cv.imshow("Optimal Path", img)
+# cv.waitKey(5*3000)
 
-plt.show(img)
+plt.matshow(img)
+plt.show()
