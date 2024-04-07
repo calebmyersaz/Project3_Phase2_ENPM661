@@ -25,8 +25,8 @@ clear = 1
 
 # RPM1 = int(float(input("Input RPM1:")))
 # RPM2 = int(float(input("Input RPM2:")))
-RPM1 = 50
-RPM2 = 100
+RPM1 = 75
+RPM2 = 35
 WheelRPM = [RPM1,RPM2]
 
 # s = int(float(input("Step size of the mobile robot in range [1,10]: ")))

@@ -128,6 +128,45 @@ for row in range(nodes.shape[0]):
                 nodes[row][col][angle].free = True
                 continue
 print("Workspace building is successfully completed!!")
+#----------------------------------------------------------------------------------------------------------------------------------------#
+
+
+def find_curve(Xi,Yi,Thetai,UL,UR):
+    t = 0
+    
+    dt = 0.05
+    Xn=Xi
+    Yn=Yi
+    Thetan = 3.14 * Thetai / 180
+    # Xi, Yi,Thetai: Input point's cooWheelRadiusdinates
+    # Xs, Ys: Start point coordinates for plot function
+    # Xn, Yn, Thetan: End point coordintes
+    D=0
+    while t<1:
+        t = t + dt
+        Xs = Xn
+        Ys = Yn
+        Xn += 0.5*WheelRadius* (UL + UR) * math.cos(Thetan) * dt
+        Yn += 0.5*WheelRadius* (UL + UR) * math.sin(Thetan) * dt
+        Thetan += (WheelRadius/ WheelDistance) * (UR - UL) * dt
+        # plt.plot([Xs, Xn], [Ys, Yn], color="blue")
+    XDot = (WheelRadius/2)*(UL+UR)*math.cos(phi)
+    YDot = (WheelRadius/2)*(UL+UR)*math.sin(phi)
+    LinearVel = math.sqrt(XDot**2 + YDot**2)
+    ThetaDot = (WheelRadius/WheelDistance)*(UL-UR)
+    
+    Thetan = 180 * (Thetan) / 3.14
+    phi = Thetai+Thetan
+    if phi < 0:
+        phi = 360 + phi
+    elif phi >= 360:
+        phi = 360 - phi    
+    
+    
+    return Xn, Yn, Thetan, D, ThetaDot,LinearVel
+
+
+
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
@@ -135,14 +174,23 @@ print("Workspace building is successfully completed!!")
 def backTrack(x,y,l):
     print("Backtracking!!")
     track = []
+    AV = 0
+    LV = 0
+    LinVelList = []
+    AngVelList = []
     while True:
         track.append((y,x,l))
+        LinVelList.append(LV)
+        AngVelList.append(AV)
         if nodes[y][x][l].parent == None:
             track.reverse()
             break
         y,x,l = nodes[y][x][l].parent
+        AV = nodes[y][x][l].AngVel
+        LV = nodes[y][x][l].LinVel
+        
     print("Path created!")
-    return track
+    return track, AngVelList, LinVelList
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
@@ -225,7 +273,7 @@ while True:
     if ((y2-y1)**2 + (x2-x1)**2) <= ((1*radius)**2):
         print("Path Planning Successfull!!!")
         # Call 'Back-Tracking' function
-        path = backTrack(x1,y1,l1)
+        path,AngVelList,LinVelList = backTrack(x1,y1,l1)
         break
 
     # If the current 'node' is not in the threshold region of 'goal' node, 'close' the node and explore neighbouring nodes
@@ -238,7 +286,8 @@ while True:
         
         # time
         # t = 0.2
-        t = 1 / ((WheelRadius / WheelDistance) * (RPM1))
+        # t = 1 / ((WheelRadius / WheelDistance) * (RPM1))
+        t=7
         print("t: ", t)
         # 'deg' to 'rad' conversion
         deg = np.pi/180
@@ -253,10 +302,10 @@ while True:
             wl = (action[0]*2*np.pi) / 60
             wr = (action[1]*2*np.pi) / 60
 
-            
+            # x,y,l,c2c,ThetaDot,LinearVel = find_curve(x1,y1,l1,action[0],action[1])            
             
             # Change in of robot orientation 'theta' in radians, corresponding to 'action'
-            # theta = int((RobotRadius / WheelDistance) * (wl - wr) * t)
+            theta = int((RobotRadius / WheelDistance) * (wl - wr) * t)
             theta = (wl - wr) / t
             print("theta: ", theta)
             theta = int(theta)
@@ -266,14 +315,20 @@ while True:
                 phi = 360 + phi
             elif phi >= 360:
                 phi = 360 - phi
-            ThetaDot = (WheelRadius/WheelDistance)*(wl+wr)*math.cos(phi)
+            ThetaDot = (WheelRadius/WheelDistance)*(wl-wr)
+            XDot = (WheelRadius/2)*(wl+wr)*math.cos(phi)
+            YDot = (WheelRadius/2)*(wl+wr)*math.sin(phi)
+            LinearVel = math.sqrt(XDot**2 + YDot**2)
             
+            
+            print("L",LinearVel)
+            print("ThetaDot",ThetaDot)
             
             # Distance traveled along X and Y axis, corresponding to 'action'
             y = int(y1 + ((WheelRadius/2) * (wl + wr) * np.sin(phi*deg) * t))
             x = int(x1 + ((WheelRadius/2) * (wl + wr) * np.cos(phi*deg) * t))
             l = phi
-            print("l: ",l)
+            # print("l: ",l)
 
             # If the new node exceeds from the map
             if x >= 600 or y >= 200:
@@ -294,6 +349,8 @@ while True:
                     nodes[y][x][l].cost = (nodes[y][x][l].coc + c2g)
                     cost = nodes[y][x][l].cost
                     nodes[y][x][l].parent = (y1,x1,l1)
+                    nodes[y][x][l].AngVel = ThetaDot
+                    nodes[y][x][l].LinVel = LinearVel
                     # Add new node to 'open_nodes'
                     hq.heappush(open_nodes, (cost, (y, x, l)))
                 # If the new node was already visited, update '.coc' and '.parent' only if the new_node.coc is less than the existing value
@@ -354,6 +411,8 @@ for i in range(0,len(path)-1):
     #    out.write(img)
 plt.matshow(map)
 plt.show()
+print(AngVelList)
+print(LinVelList)
 # # Last frame in path travelling
 # for i in range(120):
 #     out.write(img)
