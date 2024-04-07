@@ -308,6 +308,7 @@ while True:
         y1 = y
         x1 = x
         l1 = l
+        
 
 # Write last frame to video file
 # Mark 'source' and 'goal' nodes on the 'img'
@@ -315,6 +316,7 @@ while True:
 # cv.circle(img,(xg,yg),radius,(255,0,255),-1)
 # out.write(img)
 print("Number of iterations: ",iterations)
+
 # #----------------------------------------------------------------------------------------------------------------------------------------#
 
 # end = time.time()
