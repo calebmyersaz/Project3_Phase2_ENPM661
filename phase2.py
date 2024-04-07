@@ -124,11 +124,7 @@ for row in range(nodes.shape[0]):
                 nodes[row][col][angle].free = True
                 continue
 print("Workspace building is successfully completed!!")
-if nodes[155][97][356].closed != True:
-    print("Closed!")
-else:
-    print("Open!")
-print(nodes.shape)
+
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
 ## Define a 'Back-Tracking' function to derive path from 'source' to 'goal' node ##
