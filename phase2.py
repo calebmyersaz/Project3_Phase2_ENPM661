@@ -18,8 +18,8 @@ RobotRadius = 22.0 # 220 mm
 WheelDistance = 28.7 #287mm
 
 while True:
-    RPM1 = int(float(input("Input RPM1:")))
-    RPM2 = int(float(input("Input RPM2:")))
+    RPM1 = int(float(input("Input RPM1: ")))
+    RPM2 = int(float(input("Input RPM2: ")))
     # RPM1 = 50
     # RPM2 = 100
     if RPM1 <= 0 or RPM2 <= 0:
@@ -42,7 +42,7 @@ clear = int(float(input("Clearance from obstacles and walls (in cm): ")))
 # w = int(float(input("Heuristic weightage (Enter 1 for default A* execution): ")))
 w = 2
 # 'threshold' within which the goal node must be reached = 3 units
-threshold = 3 
+threshold = 5 
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
@@ -104,9 +104,11 @@ for i in range(359,480):
 
 ## Define a 'Node' class to store all the node informations ##
 class Node():
-    def __init__(self, coc=None, cost=None, parent=None, free=False, closed=False, linVel = 0, angVel = 0):
+    def __init__(self, coc=None, cog=None, cost=None, parent=None, free=False, closed=False, linVel = 0, angVel = 0):
         # Cost of Coming from 'source' node 
         self.coc = coc
+        # Cost og Going to the 'Goal' node
+        self.cog = cog
         # Total Cost = Cost of Coming from 'source' node + Cost of Going to 'goal' node 
         self.cost = cost
         # Index of Parent node
@@ -164,7 +166,7 @@ while True:
     y1 = int(float(input("Y - Coordinate of Source Node: ")))
     x2 = int(float(input("X - Coordinate of Goal Node: ")))
     y2 = int(float(input("Y - Coordinate of Goal Node: ")))
-    # x1, y1, x2, y2 = (40, 40, 50, 40)
+    # x1, y1, x2, y2 = (50, 100, 60, 100)
     print("Orientation of nodes (in degrees) is the direction of mobile robot for theta∈[0,360)")
     a1 = int(float(input("Orientation of Source Node (in degrees): ")))
     # a1 = 0
@@ -186,18 +188,18 @@ while True:
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
-# radius = 3
+radius = 5
 
-# ## Create a copy of map to store the search state for every 500 iterations ##
-# img = map.copy()
-# # Mark 'source' and 'goal' nodes on the 'img'
-# xs, ys = x1, y1
-# xg, yg = x2, y2
-# cv.circle(img,(xs,ys),radius,(0,255,255),-1) # Source --> 'Yellow'
-# cv.circle(img,(xg,yg),radius,(255,0,255),-1) # Goal --> 'Purple'
-# # Write out to 'dijkstra_output.avi' video file
-# out = cv.VideoWriter('A*_output.mp4', cv.VideoWriter_fourcc(*'mp4v'), 60, (1200,500))
-# out.write(img)
+## Create a copy of map to store the search state for every 500 iterations ##
+img = map.copy()
+# Mark 'source' and 'goal' nodes on the 'img'
+xs, ys = x1, y1
+xg, yg = x2, y2
+cv.circle(img,(xs,ys),radius,(0,255,255),-1) # Source --> 'Yellow'
+cv.circle(img,(xg,yg),radius,(255,0,255),-1) # Goal --> 'Purple'
+# Write out to 'dijkstra_output.avi' video file
+out = cv.VideoWriter('A*_phase2.mp4', cv.VideoWriter_fourcc(*'mp4v'), 60, (600,200))
+out.write(img)
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
@@ -217,19 +219,22 @@ deg = np.pi/180
 t = (5*deg) / ((WheelRadius / WheelDistance) * (Min*pi2/60))
 print("time(t) = ", t)
 
+# Minimum value of cost to go 'c2g_min'
+c2g_min = None
+
 while True:
 
     iterations += 1
     if nodes[y1][x1][l1].parent != None:
         # Change the color of all pixels explored to 'green', except 'source' and 'goal' colors
         parent_y,parent_x,parent_l = nodes[y1][x1][l1].parent
-        # cv.line(img,(parent_x,parent_y),(x1,y1),(0,255,0),1)
-        # # Write search state 'img' for every 500 iterations
-        # if iterations/500 == iterations//500:
-        #     # Mark 'source' and 'goal' nodes on the 'img'
-        #     cv.circle(img,(xs,ys),radius,(0,255,255),-1)
-        #     cv.circle(img,(xg,yg),radius,(255,0,255),-1)
-        #     out.write(img)
+        cv.line(img,(parent_x,parent_y),(x1,y1),(0,255,0),1)
+        # Write search state 'img' for every 500 iterations
+        if iterations/500 == iterations//500:
+            # Mark 'source' and 'goal' nodes on the 'img'
+            cv.circle(img,(xs,ys),radius,(0,255,255),-1)
+            cv.circle(img,(xg,yg),radius,(255,0,255),-1)
+            out.write(img)
 
     # 'nodes[y1][x1][l1]' --> current 'open' node
     if nodes[y1][x1][l1].parent == None:
@@ -246,8 +251,12 @@ while True:
         nodes[y1][x1][l1].angVel = 0
         # Call 'Back-Tracking' function
         Path, Linear_Vel, Angular_Vel = backTrack(x1,y1,l1)
-        for i in range(len(Linear_Vel)):
-            print(Path[i], Linear_Vel[i], Angular_Vel[i])
+        print("PATH")
+        print(Path)
+        print("LINEAR VELOCITY")
+        print(Linear_Vel)
+        print("ANGULAR VELOCITY")
+        print(Angular_Vel)   
         break
 
     # If the current 'node' is not in the threshold region of 'goal' node, 'close' the node and explore neighbouring nodes
@@ -283,6 +292,14 @@ while True:
             x = round(x1 + dx)
             l = phi
 
+            # Ignore the nodes if there is negligible change in position due to change in orientation
+            if y == y1 and theta_deg != 0:
+                continue
+            if x == x1 and theta_deg != 0:
+                continue
+
+            # print(f"({y}, {x}, {l}), dx: {dx}, dy: {dy}, theta: {theta}")
+
             # If the new node exceeds from the map
             if x >= 600 or y >= 200:
                 continue
@@ -295,25 +312,32 @@ while True:
                 c2c = math.sqrt((y1-y)**2 + (x1-x)**2)
                 # Cost to Go 'c2g'
                 c2g = (math.sqrt((y2-y)**2 + (x2-x)**2))*w
+                if c2g_min == None or c2g < c2g_min:
+                    c2g_min = c2g
+
                 # If the new node is visited for the first time, update '.coc', '.cost' and '.parent'
                 if nodes[y][x][l].coc == None:
                     nodes[y][x][l].coc = dist + c2c
+                    nodes[y][x][l].cog = c2g
                     nodes[y][x][l].cost = (nodes[y][x][l].coc + c2g)
                     cost = nodes[y][x][l].cost
                     nodes[y][x][l].parent = (y1,x1,l1)
+                    # Make a note of Linear Velocities(m/s) and Angular Velocities(rad/s) as a consequence of which the new node has arrised
+                    nodes[y][x][l].linVel = math.sqrt((dx/t)**2 + (dy/t)**2) / 100
+                    nodes[y][x][l].angVel = theta / t
                     # Add new node to 'open_nodes'
                     hq.heappush(open_nodes, (cost, (y, x, l)))
+                
                 # If the new node was already visited, update '.coc' and '.parent' only if the new_node.coc is less than the existing value
                 elif (dist + c2c) < nodes[y][x][l].coc:
                     nodes[y][x][l].coc = dist + c2c
                     cost = (nodes[y][x][l].coc + c2g)
                     nodes[y][x][l].parent = (y1,x1,l1)
+                    # Make a note of Linear Velocities(m/s) and Angular Velocities(rad/s) as a consequence of which the new node has arrised
+                    nodes[y][x][l].linVel = math.sqrt((dx/t)**2 + (dy/t)**2) / 100
+                    nodes[y][x][l].angVel = theta / t
                     # Update 'priority' of new node in 'open_nodes'
                     hq.heappush(open_nodes, (cost, (y, x, l)))
-
-                # Make a note of Linear Velocities(m/s) and Angular Velocities(rad/s) as a consequence of which the new node has arrised
-                nodes[y][x][l].linVel = math.sqrt((dx/t)**2 + (dy/t)**2) / 100
-                nodes[y][x][l].angVel = theta / t
 
         while True:
             # Pop next element from 'open_nodes'
@@ -321,6 +345,13 @@ while True:
             y = node[0]
             x = node[1]
             l = node[2]
+
+            # print("c2g_min: ", c2g_min)
+            # print("node.c2g: ", nodes[y][x][l].cog)
+            # # Proceed if the node does not have minimum cost to go, pop next node
+            # if (round((nodes[y][x][l].cog) * (10**10))) != round(c2g_min * 10**10):
+            #     continue
+            # print("Entered!!!!!!")
             # If priority is greater than node.cost, pop next node
             if priority == (nodes[y][x][l].cost) and nodes[y][x][l].closed == False:
                 break
@@ -332,41 +363,42 @@ while True:
         y1 = y
         x1 = x
         l1 = l
+        # print(priority, node)
 
 # Write last frame to video file
 # Mark 'source' and 'goal' nodes on the 'img'
-# cv.circle(img,(xs,ys),radius,(0,255,255),-1)
-# cv.circle(img,(xg,yg),radius,(255,0,255),-1)
-# out.write(img)
+cv.circle(img,(xs,ys),radius,(0,255,255),-1)
+cv.circle(img,(xg,yg),radius,(255,0,255),-1)
+out.write(img)
 print("Number of iterations: ",iterations)
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
-# end = time.time()
-# runntime = end-start
-# print("Path Planning Time: ",runntime)
+end = time.time()
+runntime = end-start
+print("Path Planning Time: ",runntime)
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
-# # Iterate over 'optimalPath' and change each pixel in path to 'Red'
-# count = 0
-# for i in range(0,len(Path)-1):
-#     count+=1
-#     pt1 = (Path[i][1], Path[i][0])
-#     pt2 = (Path[i+1][1], Path[i+1][0])
-#     cv.line(img,pt1,pt2,(0,0,255),1)
-#     # Write to video file for every 2 iterations
-#     if count/2 == count//2:
-#        out.write(img)
+# Iterate over 'optimalPath' and change each pixel in path to 'Red'
+count = 0
+for i in range(0,len(Path)-1):
+    count+=1
+    pt1 = (Path[i][1], Path[i][0])
+    pt2 = (Path[i+1][1], Path[i+1][0])
+    cv.line(img,pt1,pt2,(0,0,255),1)
+    # Write to video file for every 2 iterations
+    if count/2 == count//2:
+       out.write(img)
 
-# # Last frame in path travelling
-# for i in range(120):
-#     out.write(img)
+# Last frame in path travelling
+for i in range(120):
+    out.write(img)
 
-# # Display 'Optimal Path' for 5 seconds
-# cv.imshow("Optimal Path", img)
-# cv.waitKey(5*1000)
+# Display 'Optimal Path' for 5 seconds
+cv.imshow("Optimal Path", img)
+cv.waitKey(5*1000)
 
-# out.release()
+out.release()
 
 #=========================================================================================================================================#
