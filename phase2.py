@@ -213,8 +213,9 @@ start = time.time()
 pi2 = 2*np.pi
 deg = np.pi/180
 
-# time 't' (in seconds) such that the change in orientation can be atleast 30 degrees
+# time 't' (in seconds) such that the change in orientation can be atleast 15 degrees
 t = (30*deg) / ((WheelRadius / WheelDistance) * (Min*pi2/60))
+# t = 0.1
 
 # Minimum value of cost to go 'c2g_min'
 c2g_min = None
@@ -307,7 +308,7 @@ while True:
             #         if y == y1 or x == x1:
             #             continue
 
-            print(f"({y}, {x}, {l}), dx: {dx}, dy: {dy}, theta: {theta}")
+            # print(f"({y}, {x}, {l}), dx: {dx}, dy: {dy}, theta: {theta}")
 
             # If the new node exceeds from the map
             if x >= 600 or y >= 200:
@@ -372,7 +373,7 @@ while True:
         y1 = y
         x1 = x
         l1 = l
-        print(priority, node)
+        # print(priority, node)
 
 # Write last frame to video file
 # Mark 'source' and 'goal' nodes on the 'img'
