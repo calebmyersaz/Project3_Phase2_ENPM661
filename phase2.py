@@ -40,9 +40,9 @@ clear = int(float(input("Clearance from obstacles and walls (in cm): ")))
 # clear = 1
 
 # w = int(float(input("Heuristic weightage (Enter 1 for default A* execution): ")))
-w = 2
+w = 1
 # 'threshold' within which the goal node must be reached = 3 units
-threshold = 5 
+threshold = 3
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
@@ -104,11 +104,9 @@ for i in range(359,480):
 
 ## Define a 'Node' class to store all the node informations ##
 class Node():
-    def __init__(self, coc=None, cog=None, cost=None, parent=None, free=False, closed=False, linVel = 0, angVel = 0):
+    def __init__(self, coc=None, cost=None, parent=None, free=False, closed=False, linVel = 0, angVel = 0):
         # Cost of Coming from 'source' node 
         self.coc = coc
-        # Cost og Going to the 'Goal' node
-        self.cog = cog
         # Total Cost = Cost of Coming from 'source' node + Cost of Going to 'goal' node 
         self.cost = cost
         # Index of Parent node
@@ -215,9 +213,8 @@ start = time.time()
 pi2 = 2*np.pi
 deg = np.pi/180
 
-# time 't' (in seconds) such that the change in orientation can be atleast 5 degrees
-t = (5*deg) / ((WheelRadius / WheelDistance) * (Min*pi2/60))
-print("time(t) = ", t)
+# time 't' (in seconds) such that the change in orientation can be atleast 2 degrees
+t = (1*deg) / ((WheelRadius / WheelDistance) * (Min*pi2/60))
 
 # Minimum value of cost to go 'c2g_min'
 c2g_min = None
@@ -253,10 +250,16 @@ while True:
         Path, Linear_Vel, Angular_Vel = backTrack(x1,y1,l1)
         print("PATH")
         print(Path)
+        # for i in Path:
+        #     print(i)
         print("LINEAR VELOCITY")
         print(Linear_Vel)
+        # for i in Linear_Vel:
+        #     print(i)
         print("ANGULAR VELOCITY")
-        print(Angular_Vel)   
+        print(Angular_Vel)
+        # for i in Angular_Vel:
+        #     print(i)
         break
 
     # If the current 'node' is not in the threshold region of 'goal' node, 'close' the node and explore neighbouring nodes
@@ -293,12 +296,18 @@ while True:
             l = phi
 
             # Ignore the nodes if there is negligible change in position due to change in orientation
-            if y == y1 and theta_deg != 0:
-                continue
-            if x == x1 and theta_deg != 0:
-                continue
+            # if l1 == 0 or l1 == 180:
+            #     if y == y1 and theta_deg != 0:
+            #         continue
+            # elif l1 == 90 and l1 == 270:
+            #     if x == x1 and theta_deg != 0:
+            #         continue
+            # else:
+            #     if theta_deg == 0:
+            #         if y == y1 or x == x1:
+            #             continue
 
-            # print(f"({y}, {x}, {l}), dx: {dx}, dy: {dy}, theta: {theta}")
+            print(f"({y}, {x}, {l}), dx: {dx}, dy: {dy}, theta: {theta}")
 
             # If the new node exceeds from the map
             if x >= 600 or y >= 200:
@@ -324,7 +333,7 @@ while True:
                     nodes[y][x][l].parent = (y1,x1,l1)
                     # Make a note of Linear Velocities(m/s) and Angular Velocities(rad/s) as a consequence of which the new node has arrised
                     nodes[y][x][l].linVel = math.sqrt((dx/t)**2 + (dy/t)**2) / 100
-                    nodes[y][x][l].angVel = theta / t
+                    nodes[y][x][l].angVel = -1 * theta / t
                     # Add new node to 'open_nodes'
                     hq.heappush(open_nodes, (cost, (y, x, l)))
                 
@@ -335,7 +344,7 @@ while True:
                     nodes[y][x][l].parent = (y1,x1,l1)
                     # Make a note of Linear Velocities(m/s) and Angular Velocities(rad/s) as a consequence of which the new node has arrised
                     nodes[y][x][l].linVel = math.sqrt((dx/t)**2 + (dy/t)**2) / 100
-                    nodes[y][x][l].angVel = theta / t
+                    nodes[y][x][l].angVel = -1 * theta / t
                     # Update 'priority' of new node in 'open_nodes'
                     hq.heappush(open_nodes, (cost, (y, x, l)))
 
@@ -363,13 +372,14 @@ while True:
         y1 = y
         x1 = x
         l1 = l
-        # print(priority, node)
+        print(priority, node)
 
 # Write last frame to video file
 # Mark 'source' and 'goal' nodes on the 'img'
 cv.circle(img,(xs,ys),radius,(0,255,255),-1)
 cv.circle(img,(xg,yg),radius,(255,0,255),-1)
 out.write(img)
+print("time(t) = ", t)
 print("Number of iterations: ",iterations)
 
 #----------------------------------------------------------------------------------------------------------------------------------------#
