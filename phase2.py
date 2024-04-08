@@ -213,8 +213,8 @@ start = time.time()
 pi2 = 2*np.pi
 deg = np.pi/180
 
-# time 't' (in seconds) such that the change in orientation can be atleast 2 degrees
-t = (1*deg) / ((WheelRadius / WheelDistance) * (Min*pi2/60))
+# time 't' (in seconds) such that the change in orientation can be atleast 30 degrees
+t = (30*deg) / ((WheelRadius / WheelDistance) * (Min*pi2/60))
 
 # Minimum value of cost to go 'c2g_min'
 c2g_min = None
