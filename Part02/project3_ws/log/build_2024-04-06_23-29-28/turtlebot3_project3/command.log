@@ -1,0 +1,6 @@
+Invoking command in '/home/caleb/project3_ws/build/turtlebot3_project3': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/caleb/project3_ws/src/turtlebot3_project3 -DCMAKE_INSTALL_PREFIX=/home/caleb/project3_ws/install/turtlebot3_project3
+Invoked command in '/home/caleb/project3_ws/build/turtlebot3_project3' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/caleb/project3_ws/src/turtlebot3_project3 -DCMAKE_INSTALL_PREFIX=/home/caleb/project3_ws/install/turtlebot3_project3
+Invoking command in '/home/caleb/project3_ws/build/turtlebot3_project3': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/caleb/project3_ws/build/turtlebot3_project3 -- -j8 -l8
+Invoked command in '/home/caleb/project3_ws/build/turtlebot3_project3' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/caleb/project3_ws/build/turtlebot3_project3 -- -j8 -l8
+Invoking command in '/home/caleb/project3_ws/build/turtlebot3_project3': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/caleb/project3_ws/build/turtlebot3_project3
+Invoked command in '/home/caleb/project3_ws/build/turtlebot3_project3' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/caleb/project3_ws/build/turtlebot3_project3

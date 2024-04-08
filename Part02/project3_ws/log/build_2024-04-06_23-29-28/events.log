@@ -1,0 +1,402 @@
+[0.000000] (-) TimerEvent: {}
+[0.000804] (turtlebot3_project3) JobQueued: {'identifier': 'turtlebot3_project3', 'dependencies': OrderedDict()}
+[0.000903] (turtlebot3_project3) JobStarted: {'identifier': 'turtlebot3_project3'}
+[0.013590] (turtlebot3_project3) JobProgress: {'identifier': 'turtlebot3_project3', 'progress': 'cmake'}
+[0.014118] (turtlebot3_project3) Command: {'cmd': ['/usr/bin/cmake', '/home/caleb/project3_ws/src/turtlebot3_project3', '-DCMAKE_INSTALL_PREFIX=/home/caleb/project3_ws/install/turtlebot3_project3'], 'cwd': '/home/caleb/project3_ws/build/turtlebot3_project3', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'caleb'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/caleb'), ('OLDPWD', '/home/caleb'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1151'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'caleb'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'caleb'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/caleb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/caleb-HP-EliteBook-745-G6:@/tmp/.ICE-unix/1111,unix/caleb-HP-EliteBook-745-G6:/tmp/.ICE-unix/1111'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b3b92c20_3064_4eb7_86b6_e7acac5d1d09'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.OV1IL2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.568'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/caleb/project3_ws/build/turtlebot3_project3'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099478] (-) TimerEvent: {}
+[0.114756] (turtlebot3_project3) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.199604] (-) TimerEvent: {}
+[0.203850] (turtlebot3_project3) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.215455] (turtlebot3_project3) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299747] (-) TimerEvent: {}
+[0.342381] (turtlebot3_project3) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.353289] (turtlebot3_project3) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.353586] (turtlebot3_project3) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.354129] (turtlebot3_project3) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.358461] (turtlebot3_project3) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.399869] (-) TimerEvent: {}
+[0.500259] (-) TimerEvent: {}
+[0.508566] (turtlebot3_project3) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.517754] (turtlebot3_project3) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.518219] (turtlebot3_project3) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.518490] (turtlebot3_project3) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.521972] (turtlebot3_project3) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.600393] (-) TimerEvent: {}
+[0.700796] (-) TimerEvent: {}
+[0.762638] (turtlebot3_project3) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.800904] (-) TimerEvent: {}
+[0.893208] (turtlebot3_project3) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):\n'}
+[0.893700] (turtlebot3_project3) StderrLine: {'line': b'  The package name passed to `find_package_handle_standard_args` (PkgConfig)\n'}
+[0.893978] (turtlebot3_project3) StderrLine: {'line': b'  does not match the name of the calling package (gazebo).  This can lead to\n'}
+[0.894252] (turtlebot3_project3) StderrLine: {'line': b'  problems in calling code that expects `find_package` result variables\n'}
+[0.894462] (turtlebot3_project3) StderrLine: {'line': b'  (e.g., `_FOUND`) to follow a certain pattern.\n'}
+[0.894670] (turtlebot3_project3) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.894874] (turtlebot3_project3) StderrLine: {'line': b'  /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake:99 (find_package_handle_standard_args)\n'}
+[0.895087] (turtlebot3_project3) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/gazebo/gazebo-config.cmake:72 (include)\n'}
+[0.895262] (turtlebot3_project3) StderrLine: {'line': b'  CMakeLists.txt:23 (find_package)\n'}
+[0.895425] (turtlebot3_project3) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[0.895608] (turtlebot3_project3) StderrLine: {'line': b'\x1b[0m\n'}
+[0.895863] (turtlebot3_project3) StdoutLine: {'line': b'-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") \n'}
+[0.898874] (turtlebot3_project3) StdoutLine: {'line': b"-- Checking for module 'bullet>=2.82'\n"}
+[0.901015] (-) TimerEvent: {}
+[0.925225] (turtlebot3_project3) StdoutLine: {'line': b'--   Found bullet, version 3.05\n'}
+[1.001155] (-) TimerEvent: {}
+[1.101579] (-) TimerEvent: {}
+[1.139493] (turtlebot3_project3) StdoutLine: {'line': b'-- Found fcl: /usr/include (found suitable version "0.7.0", minimum required is "0.5.0") \n'}
+[1.201702] (-) TimerEvent: {}
+[1.253359] (turtlebot3_project3) StdoutLine: {'line': b'-- Found assimp: /usr/include (found version "5.2.0") \n'}
+[1.277945] (turtlebot3_project3) StdoutLine: {'line': b'-- Found DART: /usr/include (Required is at least version "6.6") found components: dart \n'}
+[1.301825] (-) TimerEvent: {}
+[1.402218] (-) TimerEvent: {}
+[1.502703] (-) TimerEvent: {}
+[1.603227] (-) TimerEvent: {}
+[1.660899] (turtlebot3_project3) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.40.0") found components: thread system filesystem program_options regex iostreams date_time \n'}
+[1.691120] (turtlebot3_project3) StdoutLine: {'line': b'-- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found version "3.12.4") \n'}
+[1.697605] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[1.703363] (-) TimerEvent: {}
+[1.705437] (turtlebot3_project3) StdoutLine: {'line': b'-- Searching for dependencies of ignition-math6\n'}
+[1.707290] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for OGRE...\n'}
+[1.707886] (turtlebot3_project3) StdoutLine: {'line': b'-- OGRE_PREFIX_WATCH changed.\n'}
+[1.718652] (turtlebot3_project3) StdoutLine: {'line': b"-- Checking for module 'OGRE'\n"}
+[1.750213] (turtlebot3_project3) StdoutLine: {'line': b'--   Found OGRE, version 1.9.0\n'}
+[1.803489] (-) TimerEvent: {}
+[1.827125] (turtlebot3_project3) StdoutLine: {'line': b'-- Found Ogre Ghadamon (1.9.0)\n'}
+[1.847556] (turtlebot3_project3) StdoutLine: {'line': b'-- Found OGRE: optimized;/usr/lib/x86_64-linux-gnu/libOgreMain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreMain.so\n'}
+[1.862438] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for OGRE_Paging...\n'}
+[1.871215] (turtlebot3_project3) StdoutLine: {'line': b'-- Found OGRE_Paging: optimized;/usr/lib/x86_64-linux-gnu/libOgrePaging.so;debug;/usr/lib/x86_64-linux-gnu/libOgrePaging.so\n'}
+[1.871574] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for OGRE_Terrain...\n'}
+[1.880111] (turtlebot3_project3) StdoutLine: {'line': b'-- Found OGRE_Terrain: optimized;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so\n'}
+[1.880529] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for OGRE_Property...\n'}
+[1.888693] (turtlebot3_project3) StdoutLine: {'line': b'-- Found OGRE_Property: optimized;/usr/lib/x86_64-linux-gnu/libOgreProperty.so;debug;/usr/lib/x86_64-linux-gnu/libOgreProperty.so\n'}
+[1.889134] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for OGRE_RTShaderSystem...\n'}
+[1.896447] (turtlebot3_project3) StdoutLine: {'line': b'-- Found OGRE_RTShaderSystem: optimized;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so;debug;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so\n'}
+[1.896787] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for OGRE_Volume...\n'}
+[1.903604] (-) TimerEvent: {}
+[1.903989] (turtlebot3_project3) StdoutLine: {'line': b'-- Found OGRE_Volume: optimized;/usr/lib/x86_64-linux-gnu/libOgreVolume.so;debug;/usr/lib/x86_64-linux-gnu/libOgreVolume.so\n'}
+[1.904246] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for OGRE_Overlay...\n'}
+[1.910604] (turtlebot3_project3) StdoutLine: {'line': b'-- Found OGRE_Overlay: optimized;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so;debug;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so\n'}
+[2.003760] (-) TimerEvent: {}
+[2.104224] (-) TimerEvent: {}
+[2.105266] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[2.107715] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-transport8 -- found version 8.2.1\n'}
+[2.108267] (turtlebot3_project3) StdoutLine: {'line': b'-- Searching for dependencies of ignition-transport8\n'}
+[2.133131] (turtlebot3_project3) StdoutLine: {'line': b'-- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found suitable version "3.12.4", minimum required is "3") \n'}
+[2.148801] (turtlebot3_project3) StdoutLine: {'line': b'-- Config-file not installed for ZeroMQ -- checking for pkg-config\n'}
+[2.160484] (turtlebot3_project3) StdoutLine: {'line': b"-- Checking for module 'libzmq >= 4'\n"}
+[2.197000] (turtlebot3_project3) StdoutLine: {'line': b'--   Found libzmq , version 4.3.4\n'}
+[2.204352] (-) TimerEvent: {}
+[2.297588] (turtlebot3_project3) StdoutLine: {'line': b'-- Found ZeroMQ: TRUE (Required is at least version "4") \n'}
+[2.304471] (-) TimerEvent: {}
+[2.309283] (turtlebot3_project3) StdoutLine: {'line': b"-- Checking for module 'uuid'\n"}
+[2.346522] (turtlebot3_project3) StdoutLine: {'line': b'--   Found uuid, version 2.37.2\n'}
+[2.404597] (-) TimerEvent: {}
+[2.451868] (turtlebot3_project3) StdoutLine: {'line': b'-- Found UUID: TRUE  \n'}
+[2.454457] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[2.455181] (turtlebot3_project3) StdoutLine: {'line': b'-- Searching for dependencies of ignition-msgs5\n'}
+[2.504716] (-) TimerEvent: {}
+[2.509958] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[2.519566] (turtlebot3_project3) StdoutLine: {'line': b"-- Checking for module 'tinyxml2'\n"}
+[2.558244] (turtlebot3_project3) StdoutLine: {'line': b'--   Found tinyxml2, version 9.0.0\n'}
+[2.604847] (-) TimerEvent: {}
+[2.652217] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[2.656958] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-common3 -- found version 3.14.0\n'}
+[2.657903] (turtlebot3_project3) StdoutLine: {'line': b'-- Searching for dependencies of ignition-common3\n'}
+[2.658710] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for dlfcn.h - found\n'}
+[2.661372] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for libdl - found\n'}
+[2.665723] (turtlebot3_project3) StdoutLine: {'line': b'-- Found DL: TRUE  \n'}
+[2.701232] (turtlebot3_project3) StdoutLine: {'line': b'-- Found tinyobjloader: /usr/lib/x86_64-linux-gnu/cmake/tinyobjloader/tinyobjloader-config.cmake (found version "2.0.0") \n'}
+[2.702726] (turtlebot3_project3) StdoutLine: {'line': b'-- Searching for <ignition-common3> component [graphics]\n'}
+[2.704920] (-) TimerEvent: {}
+[2.709252] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-common3-graphics -- found version 3.14.0\n'}
+[2.710487] (turtlebot3_project3) StdoutLine: {'line': b'-- Searching for dependencies of ignition-common3-graphics\n'}
+[2.711298] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[2.715626] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-fuel_tools4 -- found version 4.4.0\n'}
+[2.716190] (turtlebot3_project3) StdoutLine: {'line': b'-- Searching for dependencies of ignition-fuel_tools4\n'}
+[2.805064] (-) TimerEvent: {}
+[2.886492] (turtlebot3_project3) StdoutLine: {'line': b'-- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so (found version "7.81.0")  \n'}
+[2.900897] (turtlebot3_project3) StdoutLine: {'line': b"-- Checking for module 'jsoncpp'\n"}
+[2.905204] (-) TimerEvent: {}
+[2.930501] (turtlebot3_project3) StdoutLine: {'line': b'--   Found jsoncpp, version 1.9.5\n'}
+[3.005312] (-) TimerEvent: {}
+[3.013181] (turtlebot3_project3) StdoutLine: {'line': b'-- Found JSONCPP: TRUE  \n'}
+[3.025925] (turtlebot3_project3) StdoutLine: {'line': b"-- Checking for module 'libzip'\n"}
+[3.057673] (turtlebot3_project3) StdoutLine: {'line': b'--   Found libzip, version 1.7.3\n'}
+[3.105464] (-) TimerEvent: {}
+[3.140212] (turtlebot3_project3) StdoutLine: {'line': b'-- Found ZIP: TRUE  \n'}
+[3.140945] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-common3 -- found version 3.14.0\n'}
+[3.141688] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[3.142262] (turtlebot3_project3) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[3.148720] (turtlebot3_project3) StdoutLine: {'line': b'-- Found gazebo_ros_pkgs: 3.7.0 (/opt/ros/humble/share/gazebo_ros_pkgs/cmake)\n'}
+[3.151309] (turtlebot3_project3) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[3.198295] (turtlebot3_project3) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[3.205504] (turtlebot3_project3) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[3.205775] (-) TimerEvent: {}
+[3.218306] (turtlebot3_project3) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[3.240389] (turtlebot3_project3) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.270756] (turtlebot3_project3) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.305908] (-) TimerEvent: {}
+[3.406274] (-) TimerEvent: {}
+[3.463638] (turtlebot3_project3) StdoutLine: {'line': b'-- Found nav_msgs: 4.2.3 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[3.506398] (-) TimerEvent: {}
+[3.579737] (turtlebot3_project3) StdoutLine: {'line': b'-- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[3.606537] (-) TimerEvent: {}
+[3.660370] (turtlebot3_project3) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[3.663438] (turtlebot3_project3) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[3.706672] (-) TimerEvent: {}
+[3.807075] (-) TimerEvent: {}
+[3.854643] (turtlebot3_project3) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[3.898490] (turtlebot3_project3) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[3.907214] (-) TimerEvent: {}
+[3.974953] (turtlebot3_project3) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[3.989165] (turtlebot3_project3) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[4.007349] (-) TimerEvent: {}
+[4.107766] (-) TimerEvent: {}
+[4.208203] (-) TimerEvent: {}
+[4.218343] (turtlebot3_project3) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[4.308364] (-) TimerEvent: {}
+[4.382114] (turtlebot3_project3) StdoutLine: {'line': b'-- Found tf2: 0.25.6 (/opt/ros/humble/share/tf2/cmake)\n'}
+[4.408555] (-) TimerEvent: {}
+[4.508917] (-) TimerEvent: {}
+[4.521341] (turtlebot3_project3) StdoutLine: {'line': b'-- Configuring done\n'}
+[4.543059] (turtlebot3_project3) StdoutLine: {'line': b'-- Generating done\n'}
+[4.547012] (turtlebot3_project3) StdoutLine: {'line': b'-- Build files have been written to: /home/caleb/project3_ws/build/turtlebot3_project3\n'}
+[4.569680] (turtlebot3_project3) CommandEnded: {'returncode': 0}
+[4.570881] (turtlebot3_project3) JobProgress: {'identifier': 'turtlebot3_project3', 'progress': 'build'}
+[4.573189] (turtlebot3_project3) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/caleb/project3_ws/build/turtlebot3_project3', '--', '-j8', '-l8'], 'cwd': '/home/caleb/project3_ws/build/turtlebot3_project3', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'caleb'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/caleb'), ('OLDPWD', '/home/caleb'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1151'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'caleb'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'caleb'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/caleb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/caleb-HP-EliteBook-745-G6:@/tmp/.ICE-unix/1111,unix/caleb-HP-EliteBook-745-G6:/tmp/.ICE-unix/1111'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b3b92c20_3064_4eb7_86b6_e7acac5d1d09'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.OV1IL2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.568'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/caleb/project3_ws/build/turtlebot3_project3'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[4.609040] (-) TimerEvent: {}
+[4.690940] (turtlebot3_project3) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/turtlebot3_drive.dir/src/turtlebot3_drive.cpp.o\x1b[0m\n'}
+[4.709174] (-) TimerEvent: {}
+[4.809614] (-) TimerEvent: {}
+[4.910003] (-) TimerEvent: {}
+[5.010386] (-) TimerEvent: {}
+[5.110757] (-) TimerEvent: {}
+[5.211196] (-) TimerEvent: {}
+[5.311703] (-) TimerEvent: {}
+[5.412193] (-) TimerEvent: {}
+[5.512579] (-) TimerEvent: {}
+[5.612965] (-) TimerEvent: {}
+[5.713347] (-) TimerEvent: {}
+[5.813767] (-) TimerEvent: {}
+[5.914222] (-) TimerEvent: {}
+[6.014606] (-) TimerEvent: {}
+[6.114957] (-) TimerEvent: {}
+[6.215350] (-) TimerEvent: {}
+[6.315828] (-) TimerEvent: {}
+[6.416227] (-) TimerEvent: {}
+[6.516654] (-) TimerEvent: {}
+[6.617046] (-) TimerEvent: {}
+[6.717525] (-) TimerEvent: {}
+[6.817929] (-) TimerEvent: {}
+[6.918358] (-) TimerEvent: {}
+[7.018802] (-) TimerEvent: {}
+[7.119213] (-) TimerEvent: {}
+[7.219714] (-) TimerEvent: {}
+[7.320172] (-) TimerEvent: {}
+[7.420645] (-) TimerEvent: {}
+[7.521192] (-) TimerEvent: {}
+[7.621619] (-) TimerEvent: {}
+[7.722014] (-) TimerEvent: {}
+[7.822538] (-) TimerEvent: {}
+[7.923087] (-) TimerEvent: {}
+[8.023569] (-) TimerEvent: {}
+[8.124098] (-) TimerEvent: {}
+[8.224681] (-) TimerEvent: {}
+[8.325322] (-) TimerEvent: {}
+[8.425887] (-) TimerEvent: {}
+[8.526365] (-) TimerEvent: {}
+[8.626875] (-) TimerEvent: {}
+[8.727410] (-) TimerEvent: {}
+[8.827935] (-) TimerEvent: {}
+[8.928426] (-) TimerEvent: {}
+[9.028908] (-) TimerEvent: {}
+[9.129410] (-) TimerEvent: {}
+[9.229974] (-) TimerEvent: {}
+[9.330695] (-) TimerEvent: {}
+[9.431392] (-) TimerEvent: {}
+[9.531972] (-) TimerEvent: {}
+[9.632541] (-) TimerEvent: {}
+[9.733068] (-) TimerEvent: {}
+[9.833618] (-) TimerEvent: {}
+[9.934287] (-) TimerEvent: {}
+[10.034832] (-) TimerEvent: {}
+[10.135446] (-) TimerEvent: {}
+[10.236035] (-) TimerEvent: {}
+[10.336679] (-) TimerEvent: {}
+[10.437417] (-) TimerEvent: {}
+[10.537954] (-) TimerEvent: {}
+[10.638553] (-) TimerEvent: {}
+[10.739107] (-) TimerEvent: {}
+[10.839592] (-) TimerEvent: {}
+[10.940120] (-) TimerEvent: {}
+[11.040609] (-) TimerEvent: {}
+[11.141084] (-) TimerEvent: {}
+[11.241504] (-) TimerEvent: {}
+[11.341918] (-) TimerEvent: {}
+[11.442347] (-) TimerEvent: {}
+[11.542766] (-) TimerEvent: {}
+[11.643242] (-) TimerEvent: {}
+[11.743685] (-) TimerEvent: {}
+[11.844100] (-) TimerEvent: {}
+[11.944513] (-) TimerEvent: {}
+[12.044924] (-) TimerEvent: {}
+[12.145356] (-) TimerEvent: {}
+[12.245788] (-) TimerEvent: {}
+[12.346301] (-) TimerEvent: {}
+[12.446778] (-) TimerEvent: {}
+[12.547221] (-) TimerEvent: {}
+[12.647736] (-) TimerEvent: {}
+[12.748172] (-) TimerEvent: {}
+[12.848627] (-) TimerEvent: {}
+[12.949076] (-) TimerEvent: {}
+[13.049481] (-) TimerEvent: {}
+[13.149910] (-) TimerEvent: {}
+[13.250337] (-) TimerEvent: {}
+[13.350738] (-) TimerEvent: {}
+[13.451158] (-) TimerEvent: {}
+[13.551591] (-) TimerEvent: {}
+[13.652053] (-) TimerEvent: {}
+[13.752477] (-) TimerEvent: {}
+[13.852887] (-) TimerEvent: {}
+[13.953254] (-) TimerEvent: {}
+[14.053636] (-) TimerEvent: {}
+[14.154020] (-) TimerEvent: {}
+[14.254415] (-) TimerEvent: {}
+[14.354997] (-) TimerEvent: {}
+[14.455870] (-) TimerEvent: {}
+[14.556488] (-) TimerEvent: {}
+[14.656895] (-) TimerEvent: {}
+[14.757315] (-) TimerEvent: {}
+[14.857944] (-) TimerEvent: {}
+[14.958653] (-) TimerEvent: {}
+[15.059056] (-) TimerEvent: {}
+[15.159480] (-) TimerEvent: {}
+[15.259885] (-) TimerEvent: {}
+[15.360262] (-) TimerEvent: {}
+[15.460741] (-) TimerEvent: {}
+[15.561310] (-) TimerEvent: {}
+[15.661669] (-) TimerEvent: {}
+[15.762075] (-) TimerEvent: {}
+[15.862481] (-) TimerEvent: {}
+[15.962847] (-) TimerEvent: {}
+[16.063163] (-) TimerEvent: {}
+[16.163531] (-) TimerEvent: {}
+[16.263971] (-) TimerEvent: {}
+[16.364384] (-) TimerEvent: {}
+[16.464747] (-) TimerEvent: {}
+[16.565133] (-) TimerEvent: {}
+[16.665512] (-) TimerEvent: {}
+[16.765943] (-) TimerEvent: {}
+[16.866347] (-) TimerEvent: {}
+[16.966766] (-) TimerEvent: {}
+[17.067175] (-) TimerEvent: {}
+[17.167628] (-) TimerEvent: {}
+[17.268066] (-) TimerEvent: {}
+[17.368463] (-) TimerEvent: {}
+[17.468876] (-) TimerEvent: {}
+[17.569249] (-) TimerEvent: {}
+[17.669642] (-) TimerEvent: {}
+[17.770033] (-) TimerEvent: {}
+[17.870445] (-) TimerEvent: {}
+[17.970883] (-) TimerEvent: {}
+[18.071343] (-) TimerEvent: {}
+[18.171847] (-) TimerEvent: {}
+[18.272241] (-) TimerEvent: {}
+[18.372633] (-) TimerEvent: {}
+[18.473015] (-) TimerEvent: {}
+[18.573475] (-) TimerEvent: {}
+[18.673911] (-) TimerEvent: {}
+[18.774320] (-) TimerEvent: {}
+[18.874791] (-) TimerEvent: {}
+[18.975425] (-) TimerEvent: {}
+[19.075914] (-) TimerEvent: {}
+[19.176408] (-) TimerEvent: {}
+[19.277089] (-) TimerEvent: {}
+[19.377701] (-) TimerEvent: {}
+[19.478233] (-) TimerEvent: {}
+[19.578729] (-) TimerEvent: {}
+[19.679188] (-) TimerEvent: {}
+[19.779645] (-) TimerEvent: {}
+[19.880174] (-) TimerEvent: {}
+[19.980590] (-) TimerEvent: {}
+[20.081086] (-) TimerEvent: {}
+[20.181561] (-) TimerEvent: {}
+[20.280419] (turtlebot3_project3) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable turtlebot3_drive\x1b[0m\n'}
+[20.281627] (-) TimerEvent: {}
+[20.381957] (-) TimerEvent: {}
+[20.482610] (-) TimerEvent: {}
+[20.583381] (-) TimerEvent: {}
+[20.684162] (-) TimerEvent: {}
+[20.784935] (-) TimerEvent: {}
+[20.885667] (-) TimerEvent: {}
+[20.986320] (-) TimerEvent: {}
+[21.086844] (-) TimerEvent: {}
+[21.187444] (-) TimerEvent: {}
+[21.288077] (-) TimerEvent: {}
+[21.388652] (-) TimerEvent: {}
+[21.399726] (turtlebot3_project3) StdoutLine: {'line': b'[100%] Built target turtlebot3_drive\n'}
+[21.418508] (turtlebot3_project3) CommandEnded: {'returncode': 0}
+[21.468735] (turtlebot3_project3) JobProgress: {'identifier': 'turtlebot3_project3', 'progress': 'install'}
+[21.484594] (turtlebot3_project3) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/caleb/project3_ws/build/turtlebot3_project3'], 'cwd': '/home/caleb/project3_ws/build/turtlebot3_project3', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'caleb'), ('XDG_SESSION_TYPE', 'wayland'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/caleb'), ('OLDPWD', '/home/caleb'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '1151'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'caleb'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'caleb'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/home/caleb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/caleb-HP-EliteBook-745-G6:@/tmp/.ICE-unix/1111,unix/caleb-HP-EliteBook-745-G6:/tmp/.ICE-unix/1111'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/b3b92c20_3064_4eb7_86b6_e7acac5d1d09'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.OV1IL2'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.568'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/caleb/project3_ws/build/turtlebot3_project3'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[21.488751] (-) TimerEvent: {}
+[21.499424] (turtlebot3_project3) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[21.499820] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/lib/turtlebot3_project3/turtlebot3_drive\n'}
+[21.511406] (turtlebot3_project3) StdoutLine: {'line': b'-- Set runtime path of "/home/caleb/project3_ws/install/turtlebot3_project3/lib/turtlebot3_project3/turtlebot3_drive" to ""\n'}
+[21.511894] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//launch\n'}
+[21.512209] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//launch/robot_state_publisher.launch.py\n'}
+[21.512441] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//launch/competition_world.launch.py\n'}
+[21.512709] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//launch/empty_world.launch.py\n'}
+[21.512942] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//launch/spawn_turtlebot3.launch.py\n'}
+[21.513167] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models\n'}
+[21.513396] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_waffle\n'}
+[21.513615] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_waffle/model.sdf\n'}
+[21.513742] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_waffle/model.config\n'}
+[21.513967] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_waffle/model-1_4.sdf\n'}
+[21.514104] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common\n'}
+[21.514235] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common/meshes\n'}
+[21.514366] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common/meshes/waffle_pi_base.dae\n'}
+[21.514508] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common/meshes/r200.dae\n'}
+[21.514713] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common/meshes/lds.dae\n'}
+[21.514878] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common/meshes/tire.dae\n'}
+[21.515038] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common/meshes/burger_base.dae\n'}
+[21.515191] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common/meshes/waffle_base.dae\n'}
+[21.515388] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_common/model.config\n'}
+[21.515543] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_world\n'}
+[21.515719] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_world/meshes\n'}
+[21.515878] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_world/meshes/wall.dae\n'}
+[21.516077] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_world/meshes/hexagon.dae\n'}
+[21.516272] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_world/model.sdf\n'}
+[21.516498] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_world/model.config\n'}
+[21.516692] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//models/turtlebot3_world/model-1_4.sdf\n'}
+[21.516989] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//rviz\n'}
+[21.517247] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//rviz/tb3_gazebo.rviz\n'}
+[21.517469] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//urdf\n'}
+[21.517684] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//urdf/common_properties.urdf\n'}
+[21.517880] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//urdf/turtlebot3_waffle.urdf\n'}
+[21.518205] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//worlds\n'}
+[21.518443] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//worlds/competition_world.world\n'}
+[21.518646] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3//worlds/empty_world.world\n'}
+[21.518817] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/include/\n'}
+[21.518982] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/include//turtlebot3_project3\n'}
+[21.519147] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/include//turtlebot3_project3/turtlebot3_drive.hpp\n'}
+[21.519280] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/lib/turtlebot3_project3/teleop.py\n'}
+[21.519456] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/ament_index/resource_index/package_run_dependencies/turtlebot3_project3\n'}
+[21.519737] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/ament_index/resource_index/parent_prefix_path/turtlebot3_project3\n'}
+[21.520024] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/environment/ament_prefix_path.sh\n'}
+[21.520242] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/environment/ament_prefix_path.dsv\n'}
+[21.520459] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/environment/path.sh\n'}
+[21.520691] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/environment/path.dsv\n'}
+[21.520932] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/local_setup.bash\n'}
+[21.521148] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/local_setup.sh\n'}
+[21.521385] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/local_setup.zsh\n'}
+[21.521599] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/local_setup.dsv\n'}
+[21.521818] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/package.dsv\n'}
+[21.522136] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/ament_index/resource_index/packages/turtlebot3_project3\n'}
+[21.522405] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[21.522663] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[21.522856] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/cmake/turtlebot3_project3Config.cmake\n'}
+[21.523040] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/cmake/turtlebot3_project3Config-version.cmake\n'}
+[21.523241] (turtlebot3_project3) StdoutLine: {'line': b'-- Installing: /home/caleb/project3_ws/install/turtlebot3_project3/share/turtlebot3_project3/package.xml\n'}
+[21.526591] (turtlebot3_project3) CommandEnded: {'returncode': 0}
+[21.588874] (-) TimerEvent: {}
+[21.638498] (turtlebot3_project3) JobEnded: {'identifier': 'turtlebot3_project3', 'rc': 0}
+[21.639844] (-) EventReactorShutdown: {}
