@@ -112,6 +112,8 @@ Link to the GitHub Repository: https://github.com/calebmyersaz/Project3_Phase2_E
 Videos:
 Search Algorithm:
 https://drive.google.com/file/d/1mNJnJqtC2HCYlc3Og2lsrP6ltrsKOI8h/view?usp=drivesdk
+
+Ros Simulation:
 https://drive.google.com/drive/u/0/folders/1cdQxPETe6kRds01J4_O2l5UJZu20wMl2
 
 
