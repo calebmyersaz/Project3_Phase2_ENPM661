@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 ## Initialise ##
 
 WheelRadius = 3.3  #33mm
-RobotRadius = 22.0 # 220 mm
+RobotRadius = 2.3 # 220 mm
 WheelDistance = 28.7 #287mm
 
 while True:
@@ -50,55 +50,119 @@ threshold = 3
 
 clearance = clear + RobotRadius
 rounded = round(clearance)
+def create_map():
+    map = np.ones((300, 600, 3), dtype='uint8')*255
+    #Wall Barriers
+    for i in range(0,600):
+        for k in range(0,rounded):
+            map[k][i] = (0,0,0)
+    for i in range(50,600):
+        for k in range(300-rounded,300):
+            map[k][i] = (0,0,0)
+    for i in range(0,rounded):
+        for k in range(0,250):
+            map[k][i] = (0,0,0)
+    for i in range(600-rounded,600):
+        for k in range(0,300):
+            map[k][i] = (0,0,0)  
+        
+    #Left Most skinny wall
+    # Outer Black Rectangle
+    for i in range(149-rounded,151+rounded):
+        for k in range(0,180+rounded):
+            map[k][i] = (0,0,0)
+    #Inner Blue Rectangle
+    for i in range(149,151):
+        for k in range(0,180):
+            map[k][i] = (255,0,0)
 
-map = np.ones((200, 600, 3), dtype='uint8')*255
-#Wall Barriers
-for i in range(0,600):
-    for k in range(0,rounded):
-        map[k][i] = (0,0,0)
-for i in range(0,600):
-    for k in range(200-rounded,200):
-        map[k][i] = (0,0,0)
-for i in range(0,rounded):
-    for k in range(0,200):
-        map[k][i] = (0,0,0)
-for i in range(600-rounded,600):
-    for k in range(0,200):
-        map[k][i] = (0,0,0)  
-      
-#Left Most Rectangle Object
-# Outer Black Rectangle
-for i in range(149-rounded,175+rounded):
-    for k in range(0,100+rounded):
-        map[k][i] = (0,0,0)
-#Inner Blue Rectangle
-for i in range(149,175):
-    for k in range(0,100):
-        map[k][i] = (255,0,0)
-#Right Most Rectangle Object
-# Outer Black Rectangle
-for i in range(249-rounded,275+rounded):
-    for k in range(100-rounded,200):
-        map[k][i] = (0,0,0)
-#Inner Blue Rectangle
-for i in range(249,275):
-    for k in range(100,200):
-        map[k][i] = (255,0,0)
+    #Middle SKinny Wall
+    # Outer Black Rectangle
+    for i in range(299-rounded,301+rounded):
+        for k in range(120-rounded,300):
+            map[k][i] = (0,0,0)
+    #Inner Blue Rectangle
+    for i in range(299,301):
+        for k in range(120,300):
+            map[k][i] = (255,0,0)
+
+
+    #Middle SKinny Wall
+    # Outer Black Rectangle
+    for i in range(449-rounded,451+rounded):
+        for k in range(0,180+rounded):
+            map[k][i] = (0,0,0)
+    #Inner Blue Rectangle
+    for i in range(449,451):
+        for k in range(0,180):
+            map[k][i] = (255,0,0)
+    # Square block
+    # XY of bottom coner
+    ObjStart = [60,230]
+    for i in range(ObjStart[0]-1-rounded,ObjStart[0]+29+rounded):
+        for k in range(ObjStart[1]-rounded,ObjStart[1]+29+rounded):
+            map[k][i] = (0,0,0)
+            #Inner Blue Rectangle
+    for i in range(ObjStart[0]-1,ObjStart[0]+29):
+        for k in range(ObjStart[1],ObjStart[1]+29):
+            map[k][i] = (255,0,0)
+    ObjStart = [210,230]
+    for i in range(ObjStart[0]-1-rounded,ObjStart[0]+29+rounded):
+        for k in range(ObjStart[1]-rounded,ObjStart[1]+29+rounded):
+            map[k][i] = (0,0,0)
+            #Inner Blue Rectangle
+    for i in range(ObjStart[0]-1,ObjStart[0]+29):
+        for k in range(ObjStart[1],ObjStart[1]+29):
+            map[k][i] = (255,0,0)
+    ObjStart = [210,60]
+    for i in range(ObjStart[0]-1-rounded,ObjStart[0]+29+rounded):
+        for k in range(ObjStart[1]-rounded,ObjStart[1]+29+rounded):
+            map[k][i] = (0,0,0)
+            #Inner Blue Rectangle
+    for i in range(ObjStart[0]-1,ObjStart[0]+29):
+        for k in range(ObjStart[1],ObjStart[1]+29):
+            map[k][i] = (255,0,0)
+    ObjStart = [390,230]
+    for i in range(ObjStart[0]-1-rounded,ObjStart[0]+29+rounded):
+        for k in range(ObjStart[1]-rounded,ObjStart[1]+29+rounded):
+            map[k][i] = (0,0,0)
+            #Inner Blue Rectangle
+    for i in range(ObjStart[0]-1,ObjStart[0]+29):
+        for k in range(ObjStart[1],ObjStart[1]+29):
+            map[k][i] = (255,0,0)
+    ObjStart = [390,60]
+    for i in range(ObjStart[0]-1-rounded,ObjStart[0]+29+rounded):
+        for k in range(ObjStart[1]-rounded,ObjStart[1]+29+rounded):
+            map[k][i] = (0,0,0)
+            #Inner Blue Rectangle
+    for i in range(ObjStart[0]-1,ObjStart[0]+29):
+        for k in range(ObjStart[1],ObjStart[1]+29):
+            map[k][i] = (255,0,0)
+    ObjStart = [540,230]
+    for i in range(ObjStart[0]-1-rounded,ObjStart[0]+29+rounded):
+        for k in range(ObjStart[1]-rounded,ObjStart[1]+29+rounded):
+            map[k][i] = (0,0,0)
+            #Inner Blue Rectangle
+    for i in range(ObjStart[0]-1,ObjStart[0]+29):
+        for k in range(ObjStart[1],ObjStart[1]+29):
+            map[k][i] = (255,0,0)
+
+    ObjStart = [540,60]
+    for i in range(ObjStart[0]-1-rounded,ObjStart[0]+29+rounded):
+        for k in range(ObjStart[1]-rounded,ObjStart[1]+29+rounded):
+            map[k][i] = (0,0,0)
+            #Inner Blue Rectangle
+    for i in range(ObjStart[0]-1,ObjStart[0]+29):
+        for k in range(ObjStart[1],ObjStart[1]+29):
+            map[k][i] = (255,0,0)
+
+    return map
+map = create_map()
 
 #Circle centered at 420,80, r of 60
 
-#Inner Blue Rectangle
-for i in range(359-rounded,480+rounded):
-    for k in range(20-rounded,140+rounded):
-        if (((i-420)**2 + (k-80)**2)<((60+rounded)**2)):
-            map[k][i] = (0,0,0)  
-for i in range(359,480):
-    for k in range(20,140):
-        if (((i-420)**2 + (k-80)**2)<(60**2)):
-            map[k][i] = (255,0,0)
-            
-# plt.matshow(map)
-# plt.show()
+plt.matshow(map)
+plt.show()
           
 #----------------------------------------------------------------------------------------------------------------------------------------#
 
